@@ -1,6 +1,11 @@
 package util;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 import javax.servlet.http.*;
+
+import domain.Table;
 
 /** Some simple time savers. Static methods. */
 
@@ -93,6 +98,19 @@ public class ServletUtilities {
       }
     }
     return(flag);
+  }
+  
+  public static ArrayList<Table> getTableList (ResultSet resultSet) throws Exception{
+	  ArrayList<Table> tableList = new ArrayList<Table>();
+	  while(resultSet.next()){
+		 Table table = new Table(); 
+		 table.setName(resultSet.getString("nom"));
+		 table.setDescription(resultSet.getString("descripcio"));
+		 table.setId(resultSet.getLong("id"));
+		 table.setTelefon(resultSet.getLong("telefon"));
+		 tableList.add(table);
+	  }
+	  return tableList;
   }
   
   private ServletUtilities() {} // Uninstantiatable class
