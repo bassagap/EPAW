@@ -112,7 +112,11 @@ public class ServletUtilities {
 	  }
 	  return tableList;
   }
-  
+  public static String getTableList (Table table) throws Exception{
+	  String tableRow;
+	  tableRow = "<td>" + table.getId() + " "  + table.getName() + " " + table.getDescription() + " " + table.getTelefon() +  "  </td>"; 
+	  return tableRow;
+  }
   private ServletUtilities() {} // Uninstantiatable class
 }
 

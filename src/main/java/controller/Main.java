@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,24 +32,23 @@ public class Main extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		String title = "Hello World";
+		String title = "Users Table";
 		TableService tableService = new TableService();
 		String query = "SELECT * FROM TAULA";
-		ArrayList<String> userList = null;
+		String tableRowList = null;
 		try {
-			userList = tableService.getUsersList(query);
+			tableRowList = tableService.getTablesList(query);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(userList.get(0));
 		out.println(
 				ServletUtilities.headWithTitle(title) +
 				"<body/>\n" +
 				"<h1>" + title + "</h1>" +
-				"<table style = 'border: 1px solid black;'>"
+				"<table style = 'border: 1px solid black;'>" + tableRowList +
+				"</table>"
 				);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

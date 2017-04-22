@@ -9,14 +9,15 @@ import util.ServletUtilities;
 
 public class TableService {
 	
-	public ArrayList<String> getUsersList(String query) throws Exception{
-		ArrayList<String> userList = new ArrayList<String>();
+	public String getTablesList(String query) throws Exception{
+		String tableRowList = " ";
 		TableDAO tableDAO = new TableDAO(); 
 		ResultSet resultSet =  tableDAO.executeSQL(query);
 		ArrayList<Table> tableList=  ServletUtilities.getTableList(resultSet);
 		for(Table table : tableList ){
-			userList.add(table.getName());
+			tableRowList = tableRowList.concat(ServletUtilities.getTableList(table));
 		}
-		return userList;
-	}	
+		return tableRowList;
+		
+	}
 }
