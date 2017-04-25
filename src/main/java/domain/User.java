@@ -1,6 +1,6 @@
 package domain;
 
-public class Table {
+public class User {
 	private Long id;
 	private String name; 
 	private	String description; 

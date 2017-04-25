@@ -8,9 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import service.TableService;
-import util.ServletUtilities;
+import service.UserService;
+import util.UserUtilities;
 
 /**
  * Servlet implementation class Main
@@ -33,20 +34,19 @@ public class Main extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		String title = "Users Table";
-		TableService tableService = new TableService();
-		String query = "SELECT * FROM TAULA";
-		String tableRowList = null;
+		UserService userService = new UserService();
+		String userRowList = null;
 		try {
-			tableRowList = tableService.getTablesList(query);
+			userRowList = userService.getTablesList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		out.println(
-				ServletUtilities.headWithTitle(title) +
+				UserUtilities.headWithTitle(title) +
 				"<body/>\n" +
 				"<h1>" + title + "</h1>" +
-				"<table style = 'border: 1px solid black;'>" + tableRowList +
+				"<table style = 'border: 1px solid black;'>" + userRowList +
 				"</table>"
 				);
 	}
@@ -57,6 +57,22 @@ public class Main extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	public static String dummyMethod(HttpSession session){
+		UserService userService = new UserService();
+		String userRowList = null;
+		try {
+			userRowList = userService.getTablesList();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return UserUtilities.headWithTitle("Escoita") +
+				"<body/>\n" +
+				"<h1>" + "escoita" + "</h1>" +
+				"<table style = 'border: 1px solid black;'>" + userRowList +
+				"</table>";
 	}
 
 }

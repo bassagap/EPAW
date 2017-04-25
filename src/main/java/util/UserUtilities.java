@@ -1,15 +1,13 @@
 package util;
 
-import java.sql.ResultSet;
-import java.util.ArrayList;
 
 import javax.servlet.http.*;
 
-import domain.Table;
+import domain.User;
 
 /** Some simple time savers. Static methods. */
 
-public class ServletUtilities {
+public class UserUtilities {
   public static String headWithTitle(String title) {
     return("<!DOCTYPE html>\n" +
            "<html>\n" +
@@ -100,23 +98,12 @@ public class ServletUtilities {
     return(flag);
   }
   
-  public static ArrayList<Table> getTableList (ResultSet resultSet) throws Exception{
-	  ArrayList<Table> tableList = new ArrayList<Table>();
-	  while(resultSet.next()){
-		 Table table = new Table(); 
-		 table.setName(resultSet.getString("nom"));
-		 table.setDescription(resultSet.getString("descripcio"));
-		 table.setId(resultSet.getLong("id"));
-		 table.setTelefon(resultSet.getLong("telefon"));
-		 tableList.add(table);
-	  }
-	  return tableList;
-  }
-  public static String getTableList (Table table) throws Exception{
+  
+  public static String getTableList (User table) throws Exception{
 	  String tableRow;
-	  tableRow = "<td>" + table.getId() + " "  + table.getName() + " " + table.getDescription() + " " + table.getTelefon() +  "  </td>"; 
+	  tableRow = "<tr><td>" + table.getId() + " "  + table.getName() + " " + table.getDescription() + " " + table.getTelefon() +  " </td></tr>"; 
 	  return tableRow;
   }
-  private ServletUtilities() {} // Uninstantiatable class
+  private UserUtilities() {} // Uninstantiatable class
 }
 
