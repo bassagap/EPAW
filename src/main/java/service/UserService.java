@@ -4,18 +4,12 @@ import java.util.ArrayList;
 
 import domain.User;
 import persistence.UserDAO;
-import util.UserUtilities;
 
 public class UserService {
 	
-	public String getTablesList() throws Exception{
-		String userRowList = " ";
+	public ArrayList<User> getUsersList() throws Exception{
 		UserDAO userDAO = new UserDAO(); 
-		ArrayList<User> userList =  userDAO.getUsersList();
-		for(User user : userList ){
-			userRowList = userRowList.concat(UserUtilities.getTableList(user));
-		}
-		return userRowList;
-		
+		ArrayList<User> usersList =  userDAO.getUsersList();
+		return usersList;	
 	}
 }
