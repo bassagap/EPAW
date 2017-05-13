@@ -49,12 +49,6 @@ table {
 	<%       
 	}
 	%>
-	<tr>
-		<td style = 'border: 1px solid black; width: 50px;'><% %></td>
-		<td style = 'border: 1px solid black; width: 80px;'><% %></td>
-		<td style = 'border: 1px solid black; width: 80px;'><% %></td>		
-		<td style = 'border: 1px solid black; width: 80px;'><% %></td>	
-	</tr>
 </table>
 </body>
 </html>

@@ -40,10 +40,8 @@ public class Main extends HttpServlet {
 		try {
 			usersList = userService.getUsersList();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return usersList;
 	}
 
