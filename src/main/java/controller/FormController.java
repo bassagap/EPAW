@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 
 import models.BeanUser;
+import service.UserService;
 
 /**
  * Servlet implementation class FormController
@@ -37,21 +38,24 @@ public class FormController extends HttpServlet {
 		
 		   // Fill the bean with the request parmeters
 		   BeanUtils.populate(user, request.getParameterMap());
-		   System.out.println("my controller");
-		   
-		   if (user.isComplete()) {
-			   System.out.println("TODO: INSERT into DB");
-		   } 
-		   else {
-			   // Put the bean into the request as an attribute
-			   request.setAttribute("user",user);
-			   RequestDispatcher dispatcher = request.getRequestDispatcher("/RegisterForm.jsp");
-			   dispatcher.forward(request, response);
+		   UserService userService = new UserService(); 
+		   if (!userService.userExists(user)) {
+			   userService.insertUser(user); 
+			   user = new BeanUser();
+		   } else {
+			   user.setErrorName();	  
 		   }
+	
+		   request.setAttribute("user",user);
+		   RequestDispatcher dispatcher = request.getRequestDispatcher("/RegisterForm.jsp");
+		   dispatcher.forward(request, response);
 	    } 
 		catch (IllegalAccessException | InvocationTargetException e) {
 				e.printStackTrace();
-	    }
+	    } catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
 		    
     }
 
