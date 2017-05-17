@@ -2,8 +2,7 @@ package util;
 
 
 import javax.servlet.http.*;
-
-import domain.User;
+import models.BeanUser;
 
 /** Some simple time savers. Static methods. */
 
@@ -99,9 +98,9 @@ public class UserUtilities {
   }
   
   
-  public static String getTableList (User table) throws Exception{
+  public static String getTableList (BeanUser user) throws Exception{
 	  String tableRow;
-	  tableRow = "<tr><td>" + table.getId() + " "  + table.getName() + " " + table.getDescription() + " " + table.getTelefon() +  " </td></tr>"; 
+	  tableRow = "<tr><td>" + user.getUserName() + " "  + user.getMail() + " " + user.getGender() + " " + user.getSportsList() +  " </td></tr>"; 
 	  return tableRow;
   }
   private UserUtilities() {} // Uninstantiatable class

@@ -2,7 +2,6 @@ package persistence;
 
 import java.sql.*;
 import java.util.ArrayList;
-import domain.User;
 import models.BeanUser;
 
 
@@ -28,24 +27,23 @@ public class UserDAO {
 		return isValid; 
 	}
 	public void insertUser(BeanUser user) throws SQLException{
-		String query = "INSERT INTO TAULA (USERNAME, PASSWORD) VALUES ('"+user.getUserName()+ "', '" + user.getPassword()+  "')"; 
+		String query = "INSERT INTO TAULA (USERNAME, PASSWORD, GENDER, WEIGHT, DATEOFBIRTH, MAIL) VALUES ('"+user.getUserName()+ "', '" + user.getPassword()+  "', '" +user.getGender()+ "', '"+ user.getWeight() + "', '"+user.getDateOfBirth()+"', '"+ user.getMail()+ "')"; 
 		int resultSet =  statement.executeUpdate(query);
 	}
 	
 	// execute query to access users table: 
-	public ArrayList<User> getUsersList () throws SQLException{
+	public ArrayList<BeanUser> getUsersList () throws Exception{
 		String query = "SELECT * FROM TAULA";
 		ResultSet resultSet =  statement.executeQuery(query);
-		ArrayList<User> tableList = new ArrayList<User>();
+		ArrayList<BeanUser> userList = new ArrayList<BeanUser>();
 		  while(resultSet.next()){
-			 User table = new User(); 
-			 table.setName(resultSet.getString("nom"));
-			 table.setDescription(resultSet.getString("descripcio"));
-			 table.setId(resultSet.getLong("id"));
-			 table.setTelefon(resultSet.getLong("telefon"));
-			 tableList.add(table);
+			 BeanUser user = new BeanUser(); 
+			 user.setUserName(resultSet.getString("userName"));
+			 user.setPassword(resultSet.getString("password"));
+			 user.setMail(resultSet.getString("mail"));
+			 userList.add(user);
 		  }
-		  return tableList;
+		  return userList;
 		
 	}
 	public void disconnectBD() throws SQLException {

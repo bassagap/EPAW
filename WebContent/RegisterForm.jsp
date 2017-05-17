@@ -148,7 +148,7 @@ else {
 		
 		<!--===============GENDER===================-->
 		<div class ="field">
-			<input list="gender" name="gender" placeholder="Gender" >
+			<input list="gender" name="gender" placeholder="Gender" value="<%=user.getGender() %>">
 			<datalist id="gender">
 				<option value="Male"></option>
 				<option value="Female"></option>
@@ -158,7 +158,7 @@ else {
 		<!--===============BIRTHDATE===================-->
 		<div class="field">
 			<p> Introduce your birthdate</p>
-			<div id="bdf" class="bdf">
+			<div id="dateOfBirth" class="dateOfBirth">
 				<input id="day" type="number" maxlength="2" placeholder="DD" min="1" max="31"/> /              
 				<input id="month" type="number" maxlength="2" placeholder="MM" min="1" max="12"/>/
 				<input id="year" type="number" maxlength="4" placeholder="YYYY"  min="1895" max="2017"/>
@@ -167,12 +167,12 @@ else {
 	
 		<!--===============WEIGHT===================-->
 		<div class="field">
-			<input type="number" name="weight" id="weight" placeholder="Weight" style="width: 20%;" min="10" max="200"> &nbsp&nbsp kg
+			<input type="number" name="weight" id="weight" placeholder="Weight" value="<%=user.getWeight() %>" style="width: 20%;" min="10" max="200"> &nbsp&nbsp kg
 		</div>
 		
 		<!--===============EMAIL===================-->
 		<div class="field">
-			<input type="email" name="email" placeholder="Email" value="<%=user.getMail() %>">
+			<input type="mail" name="mail" placeholder="Email" value="<%=user.getMail() %>">
 		</div>
 		</div>
 		<input class="button" type="submit" value="Submit" style="width:100%" >
