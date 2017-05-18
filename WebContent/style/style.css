@@ -115,7 +115,7 @@ ul {
 	display : none;
 }
 
-.bdf{
+.dateOfBirth{
 	height:100%;
 	margin-bottom:20px;
 	display: inline; 
@@ -127,7 +127,7 @@ ul {
 	color: white;
 }
 
-.bdf input[type=number] { 
+.dateOfBirth input[type=number] { 
     width: 1.7em; 
     padding: 0 0.4em; 	
     border: none; 
@@ -136,7 +136,7 @@ ul {
     color: white;            
 }
 
-.bdf input#year { width:2.5em; }
+.dateOfBirth input#year { width:2.5em; }
 
 .mutliSelect li{
 	margin-bottom:10px;
@@ -210,7 +210,7 @@ ul {
 	z-index:1;
 }
 
-input[type=text], [type=password], input[list], [type=email]{
+input[type=text], [type=password], input[list], [type=mail]{
 	font-size:22px;
 	display:block;
 	width:100%;

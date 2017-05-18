@@ -74,7 +74,7 @@ else {
 		
 		<!--===============PASSWORD===================-->
 		<div class="field">
-			<input type="password" name="password" id="password" placeholder="Password" value="<%=user.getPassword() %>" required minlength="6", maxlength="30"/>
+			<input type="password" name="password" id="password" placeholder="Password" value="<%=user.getPassword() %>" required minlength="6", maxlength="30" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[a-z]).*$" title="Must contain at least one number and special character."/>
 		</div>
 		
 		<!--===============T&C===================-->
@@ -157,7 +157,7 @@ else {
 		
 		<!--===============BIRTHDATE===================-->
 		<div class="field">
-			<p> Introduce your birthdate</p>
+			<p> Introduce your birthday</p>
 			<div id="dateOfBirth" class="dateOfBirth">
 				<input id="day" type="number" maxlength="2" placeholder="DD" min="1" max="31"/> /              
 				<input id="month" type="number" maxlength="2" placeholder="MM" min="1" max="12"/>/
@@ -172,7 +172,7 @@ else {
 		
 		<!--===============EMAIL===================-->
 		<div class="field">
-			<input type="mail" name="mail" placeholder="Email" value="<%=user.getMail() %>">
+			<input type="mail" name="mail" placeholder="Email" value="<%=user.getMail() %>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
 		</div>
 		</div>
 		<input class="button" type="submit" value="Submit" style="width:100%" >
